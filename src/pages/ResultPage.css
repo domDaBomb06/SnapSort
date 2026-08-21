@@ -1,0 +1,153 @@
+
+.result {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+  background-color: var(--bg-white);
+  overflow: hidden;
+}
+
+.result__content {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.result__card {
+  background-color: var(--bg-white);
+  border-radius: 24px;
+  padding: 24px 20px;
+  width: 85%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
+}
+
+.result__low-confidence {
+  width: 100%;
+  background-color: var(--bg-white);
+  border-radius: 10px;
+  padding: 8px 12px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.result__low-confidence-title {
+  color: var(--text-black);
+  font-weight: 500;
+  font-size: 12px;
+  margin: 0 0 2px;
+}
+
+.result__low-confidence-sub {
+  color:  var(--text-black);
+  font-size: 11px;
+  margin: 0;
+}
+
+.result__this-item {
+  color: var(--text-black);
+  font-size: 16px;
+  margin: 0 0 4px;
+}
+
+.result__material {
+  font-size: 28px;
+  font-weight: 700;
+  margin: 0 0 6px;
+}
+
+.result__bin-label {
+  color: var(--text-black);
+  font-size: 15px;
+  margin: 0 0 16px;
+}
+
+.result__bin-img {
+  height: 140px;
+  object-fit: contain;
+  margin-bottom: 20px;
+}
+
+.result__confidence-row {
+  width: 100%;
+  margin-bottom: 4px;
+}
+
+.result__confidence-labels {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.result__confidence-label {
+  font-size: 11px;
+  color: var(--text-grey);
+}
+
+.result__confidence-track {
+  width: 100%;
+  height: 6px;
+  background-color: var(--confidence-track-bar);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.result__confidence-fill {
+  height: 100%;
+  border-radius: 3px;
+  transition: width 0.5s ease;
+}
+
+.result__how-card {
+  margin: 12px 14px 0;
+  background-color: var(--smartSort-green);
+  border-radius: 16px;
+  padding: 14px 18px;
+
+}
+
+.result__how-title {
+  color: var(--text-white);
+  font-weight: 600;
+  font-size: 14px;
+  margin: 0 0 8px;
+  text-align: center;
+}
+
+.result__how-text {
+  color: var(--text-white);
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 0;
+  white-space: pre-line;
+}
+
+.result__reclaimer-card {
+  margin: 12px 14px 24px;
+  background-color: var(--accent-color);
+  border-radius: 16px;
+  padding: 14px 18px;
+}
+
+.result__reclaimer-title {
+  color: var(--text-white);
+  font-weight: 600;
+  font-size: 14px;
+  margin: 0 0 8px;
+  text-align: center;
+}
+
+.result__reclaimer-text {
+  color: var(--text-white);
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 0;
+}

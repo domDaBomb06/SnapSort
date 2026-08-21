@@ -1,0 +1,32 @@
+export const binData = {
+  Paper: {
+    binColour: '#378ADD',
+    binLabel: 'BLUE',
+    instruction: 'Flatten cardboard boxes and place paper and cardboard in the blue recycling bin. If wet or heavily soiled with food, place in general waste instead.',
+    reclaimerFact: 'Clean paper and cardboard is one of the most valuable materials for waste reclaimers.',
+  },
+  Plastic: {
+    binColour: '#F0B429',
+    binLabel: 'YELLOW',
+    instruction: 'Rinse the plastic container and place in the yellow recycling bin. Remove lids — they go in general waste. ADDITIONAL TIP: If it is a plastic bottle, use the reverse vending machine in the Matrix foyer for a deposit refund.',
+    reclaimerFact: 'Correctly sorted plastic helps waste reclaimers work more safely and efficiently!',
+  },
+  Glass: {
+    binColour: '#2D6A4F',
+    binLabel: 'GREEN',
+    instruction: 'Rinse the glass container and place in the green recycling bin. Do not break glass because it becomes a safety hazard.',
+    reclaimerFact: 'Clean glass helps waste reclaimers avoid injuries when sorting through waste.',
+  },
+  Metal: {
+    binColour: '#E63946',
+    binLabel: 'RED',
+    instruction: 'Rinse cans and place in the green bin. ADDITIONAL TIP: use the reverse vending machine in the Matrix foyer for a deposit refund.',
+    reclaimerFact: 'Metal cans are highly valuable recyclable materials that significantly increase reclaimer income.',
+  },
+  'General Waste': {
+    binColour: '#1A1A1A',
+    binLabel: 'BLACK',
+    instruction: 'This item cannot be recycled. Place it in the black or grey general waste bin. This includes food waste, tissues, and composite packaging.',
+    reclaimerFact: 'Correctly placing non-recyclables in general waste saves reclaimers time and keeps recyclable streams clean!',
+  },
+}

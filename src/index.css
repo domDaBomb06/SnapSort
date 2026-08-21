@@ -1,0 +1,23 @@
+:root {
+  --smartSort-green: #2D6A4F;
+  --accent-color: #547BA5;
+  --bg-grey: #7D7D7D;
+  --bg-white: white;
+  --text-white: white;
+  --text-black: black;
+  --text-grey: #888;
+  --font-main: 'Montserrat', sans-serif;
+  --confidence-track-bar: #e6ddd0;
+
+
+
+  body {
+    font-family: var(--font-main);
+    margin: 0;
+    padding: 0;
+  }
+}
+
+
+
+

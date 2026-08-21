@@ -1,0 +1,122 @@
+
+.scan {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  width: 100%;
+  background-color: var(--bg-grey);
+  overflow: hidden;
+}
+
+.scan__instruction {
+  color: var(--text-white);
+  text-align: center;
+  font-size: 16px;
+  font-weight: 500;
+  margin: 20px 0 12px;
+  flex-shrink: 0;
+}
+
+.scan__viewfinder {
+  margin: 0 24px;
+  border-radius: 20px;
+  overflow: hidden;
+  border: 3px solid var(--smartSort-green);
+  position: relative;
+  flex-shrink: 0;
+  aspect-ratio: 1 / 1;
+}
+
+.scan__video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.scan__loading-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+}
+
+.scan__spinner {
+  width: 36px;
+  height: 36px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top: 3px solid white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.scan__loading-text {
+  color: var(--text-white);
+  font-size: 14px;
+}
+
+.scan__capture-area {
+  display: flex;
+  justify-content: center;
+  margin-top: 28px;
+  flex-shrink: 0;
+}
+
+.scan__capture-btn {
+  width: 72px;
+  height: 72px;
+  border-radius: 50%;
+  background-color: var(--smartSort-green);
+  border: 4px solid white;
+  box-shadow: 0 4px 16px rgba(45, 106, 79, 0.4);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.2s;
+}
+
+.scan__capture-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.scan__capture-icon {
+  width: 36px;
+  height: 36px;
+  object-fit: contain;
+}
+
+.scan__loading-hint {
+  color: rgba(255, 255, 255, 0.5);
+  text-align: center;
+  font-size: 12px;
+  margin-top: 8px;
+}
+
+.scan__nav {
+  margin-top: auto;
+}
+
+.scan__no-permission {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.scan__no-permission p {
+  color: var(--text-white);
+  text-align: center;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}

@@ -1,0 +1,37 @@
+
+.header {
+  background-color: var(--smartSort-green);
+  padding: 10px 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-shrink: 0;
+}
+
+.header__back-btn {
+  background: none;
+  border: none;
+  color: var(--text-white);
+  font-size: 24px;
+  cursor: pointer;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  width: 32px;
+}
+
+.header__left {
+  width: 32px;
+}
+
+.header__logo {
+  height: 40px;
+  object-fit: contain;
+}
+
+.header__points {
+  width: 48px;
+  text-align: right;
+  color: var(--text-white);
+  font-size: 12px;
+}
