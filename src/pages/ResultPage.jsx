@@ -119,6 +119,13 @@ function ResultPage({ result, onNavigate, points }) {
           <p className="result__reclaimer-text">{bin.reclaimerFact}</p>
         </div>
 
+
+        {/* Sorting tip card */}
+        <div className="sorting_tip-card">
+          <p className="sorting_tip-title">When in doubt:</p>
+          <p className="sorting_tip-text">{bin.sortingFact}</p>
+        </div>
+
       </div>
 
       {/* Bottom nav */}

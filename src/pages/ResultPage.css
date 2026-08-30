@@ -106,48 +106,75 @@
   transition: width 0.5s ease;
 }
 
-.result__how-card {
-  margin: 12px 14px 0;
-  background-color: var(--smartSort-green);
-  border-radius: 16px;
-  padding: 14px 18px;
 
-}
+/*HOW TO DISPOSE CARD*/
+  .result__how-card {
+    margin: 12px 14px 0;
+    background-color: var(--smartSort-green);
+    border-radius: 16px;
+    padding: 14px 18px;
 
-.result__how-title {
-  color: var(--text-white);
-  font-weight: 600;
-  font-size: 14px;
-  margin: 0 0 8px;
-  text-align: center;
-}
+  }
 
-.result__how-text {
-  color: var(--text-white);
-  font-size: 13px;
-  line-height: 1.5;
-  margin: 0;
-  white-space: pre-line;
-}
+  .result__how-title {
+    color: var(--text-white);
+    font-weight: 600;
+    font-size: 14px;
+    margin: 0 0 8px;
+    text-align: center;
+  }
 
-.result__reclaimer-card {
-  margin: 12px 14px 24px;
-  background-color: var(--accent-color);
-  border-radius: 16px;
-  padding: 14px 18px;
-}
+  .result__how-text {
+    color: var(--text-white);
+    font-size: 13px;
+    line-height: 1.5;
+    margin: 0;
+    white-space: pre-line;
+  }
 
-.result__reclaimer-title {
-  color: var(--text-white);
-  font-weight: 600;
-  font-size: 14px;
-  margin: 0 0 8px;
-  text-align: center;
-}
+/*WASTE RECLAIMER FACT CARD */  
+  .result__reclaimer-card {
+    margin: 12px 14px 24px;
+    background-color: var(--accent-color);
+    border-radius: 16px;
+    padding: 14px 18px;
+  }
 
-.result__reclaimer-text {
-  color: var(--text-white);
-  font-size: 13px;
-  line-height: 1.5;
-  margin: 0;
-}
+  .result__reclaimer-title {
+    color: var(--text-white);
+    font-weight: 600;
+    font-size: 14px;
+    margin: 0 0 8px;
+    text-align: center;
+  }
+
+  .result__reclaimer-text {
+    color: var(--text-white);
+    font-size: 13px;
+    line-height: 1.5;
+    margin: 0;
+  }
+
+
+/*WASTE SORTING TIP CARD */  
+  .sorting_tip-card {
+    margin: 12px 14px 24px;
+    background-color: var(--accent-color);
+    border-radius: 16px;
+    padding: 14px 18px;
+  }
+
+  .sorting_tip-title {
+    color: var(--text-white);
+    font-weight: 600;
+    font-size: 14px;
+    margin: 0 0 8px;
+    text-align: center;
+  }
+
+  .sorting_tip-text {
+    color: var(--text-white);
+    font-size: 13px;
+    line-height: 1.5;
+    margin: 0;
+  }
