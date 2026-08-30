@@ -159,13 +159,14 @@
 /*WASTE SORTING TIP CARD */  
   .sorting_tip-card {
     margin: 12px 14px 24px;
-    background-color: var(--accent-color);
+    background-color: var(--bg-white);
+    border: solid 3px var(--smartSort-green);
     border-radius: 16px;
     padding: 14px 18px;
   }
 
   .sorting_tip-title {
-    color: var(--text-white);
+    color: var(--text-black);
     font-weight: 600;
     font-size: 14px;
     margin: 0 0 8px;
@@ -173,7 +174,7 @@
   }
 
   .sorting_tip-text {
-    color: var(--text-white);
+    color: var(--text-black);
     font-size: 13px;
     line-height: 1.5;
     margin: 0;
