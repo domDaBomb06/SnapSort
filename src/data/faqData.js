@@ -1,0 +1,42 @@
+export const faqData = [
+  {
+    id: 1,
+    name: 'Plastic bottle',
+    category: 'Plastic',
+    binColour: '#F0B429',
+    binLabel: 'Yellow bin',
+    instruction: 'Rinse the bottle and place in the yellow recycling bin. Remove the lid (it goes in general waste).',
+  },
+  {
+    id: 2,
+    name: 'Cardboard coffee cup',
+    category: 'General Waste',
+    binColour: '#1A1A1A',
+    binLabel: 'Black bin',
+    instruction: 'Despite being made of paper, coffee cups have a plastic lining and cannot be recycled. Place in the general waste bin.',
+  },
+  {
+    id: 3,
+    name: 'Glass bottle',
+    category: 'Glass',
+    binColour: '#2D6A4F',
+    binLabel: 'Green bin',
+    instruction: 'Rinse the bottle and place in the green recycling bin. Do not break glass! It becomes a safety hazard for waste reclaimers.',
+  },
+  {
+    id: 4,
+    name: 'Tin / aluminium can',
+    category: 'Metal',
+    binColour: '#E63946',
+    binLabel: 'Red bin',
+    instruction: 'Rinse the can and place in the red bin. *Even better use the reverse vending machine for a deposit refund.',
+  },
+  {
+    id: 5,
+    name: 'Cardboard box',
+    category: 'Paper',
+    binColour: '#378ADD',
+    binLabel: 'Blue bin',
+    instruction: 'Flatten the box and place in the blue recycling bin. If it is wet or heavily soiled with food, place in general waste instead.',
+  },
+]
