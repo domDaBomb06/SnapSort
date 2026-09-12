@@ -9,20 +9,40 @@ export function usePoints() {
     fifty: false,
   })
   const [newBadge, setNewBadge] = useState(null)
+  const [categoryCounts, setCategoryCounts] = useState({
+    Plastic: 0,
+    Paper: 0,
+    Glass: 0,
+    Metal: 0,
+    'General Waste': 0,
+  })
 
   // Load from localStorage on first render
   useEffect(() => {
     const savedPoints = localStorage.getItem('snapsort_points')
     const savedBadges = localStorage.getItem('snapsort_badges')
+    const savedCounts = localStorage.getItem('snapsort_categories')
     if (savedPoints) setPoints(parseInt(savedPoints))
     if (savedBadges) setBadges(JSON.parse(savedBadges))
+    if (savedCounts) setCategoryCounts(JSON.parse(savedCounts))
   }, [])
 
-  function addPoint() {
+  function addPoint(category) {
     const newPoints = points + 1
     setPoints(newPoints)
     localStorage.setItem('snapsort_points', newPoints)
     checkBadges(newPoints)
+    trackCategory(category)
+  }
+
+  function trackCategory(category) {
+    if (!category) return
+    const updatedCounts = {
+      ...categoryCounts,
+      [category]: (categoryCounts[category] || 0) + 1,
+    }
+    setCategoryCounts(updatedCounts)
+    localStorage.setItem('snapsort_categories', JSON.stringify(updatedCounts))
   }
 
   function checkBadges(currentPoints) {
@@ -51,5 +71,5 @@ export function usePoints() {
     }
   }
 
-  return { points, badges, newBadge, addPoint }
+  return { points, badges, newBadge, categoryCounts, addPoint }
 }

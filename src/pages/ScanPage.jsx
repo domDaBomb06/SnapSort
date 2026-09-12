@@ -88,7 +88,7 @@ function ScanPage({ onNavigate, onResult, points, newBadge, addPoint }) {
 
       // Only award a point if confidence is 60% or above
       if (top.probability >= 0.6) {
-        addPoint()
+        addPoint(top.className)
       }
 
       onResult({

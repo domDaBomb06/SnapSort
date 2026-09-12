@@ -111,7 +111,7 @@
   .result__how-card {
     margin: 12px 14px 0;
     background-color: var(--smartSort-green);
-    border-radius: 16px;
+    border-radius: 5px;
     padding: 14px 18px;
 
   }
@@ -136,7 +136,7 @@
   .result__reclaimer-card {
     margin: 12px 14px 24px;
     background-color: var(--accent-color);
-    border-radius: 16px;
+   border-radius: 5px;
     padding: 14px 18px;
   }
 
@@ -161,7 +161,7 @@
     margin: 12px 14px 24px;
     background-color: var(--bg-white);
     border: solid 3px var(--smartSort-green);
-    border-radius: 16px;
+    border-radius: 5px;
     padding: 14px 18px;
   }
 

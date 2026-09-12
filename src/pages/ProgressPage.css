@@ -17,7 +17,7 @@
 }
 
 .progress__summary {
-  background-color: var(--smartSort-green);
+  border: 1px solid var(--smartSort-green);
   border-radius: 20px;
   padding: 24px 20px;
   text-align: center;
@@ -28,13 +28,13 @@
 }
 
 .progress__summary-label {
-  color: white;
+  color: var(--text-black);
   font-size: 13px;
   margin: 0;
 }
 
 .progress__summary-points {
-  color: white;
+  color: var(--smartSort-green);
   font-size: 52px;
   font-weight: 700;
   margin: 0;
@@ -42,7 +42,7 @@
 }
 
 .progress__summary-sub {
-  color: white;
+  color: var(--text-black);
   font-size: 13px;
   margin: 0 0 8px;
 }
@@ -58,10 +58,11 @@
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
+  border: 1px solid var(--smartSort-green);
+  border-radius: 16px;
 }
 
 .progress__badge {
-  border-radius: 16px;
   padding: 16px 12px;
   text-align: center;
   display: flex;
@@ -71,18 +72,25 @@
 }
 
 .progress__badge--earned {
-  background-color: var(--smartSort-green);
   border: none;
 }
 
 .progress__badge--locked {
-  background-color: var(--bg-grey);
-  border: 1px solid var(--accent-color);
+  background-color: var(--bg-white);
+}
+
+.progress__badge--locked .progress__badge-icon {
+  filter: grayscale(100%) opacity(35%);
 }
 
 .progress__badge-icon {
   font-size: 28px;
-}
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  object-fit: contain;}
 
 .progress__badge-label {
   font-size: 13px;

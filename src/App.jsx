@@ -10,7 +10,7 @@ import ProgressPage from './pages/ProgressPage'
 function App() {
   const [currentPage, setCurrentPage] = useState(null)
   const [result, setResult] = useState(null)
-  const { points, newBadge, addPoint } = usePoints()
+  const { points, newBadge, addPoint, categoryCounts } = usePoints()
 
   // Check if user has been onboarded
   useEffect(() => {
@@ -97,6 +97,7 @@ function App() {
         <ProgressPage
           onNavigate={handleNavigate}
           points={points}
+          categoryCounts={categoryCounts}
         />
       )}
 
