@@ -51,7 +51,7 @@ function ProgressPage({ onNavigate, points, categoryCounts }) {
           <p className="progress__summary-points">{points}</p>
           <p className="progress__summary-sub">items sorted correctly</p>
           <div className="progress__collective">
-            <p>🌍 Wits campus — sorting waste, one snap at a time</p>
+
           </div>
         </div>
 

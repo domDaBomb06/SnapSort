@@ -99,7 +99,7 @@
 }
 
 .landing__privacy {
-  color: var(--accent-color);
+  color: var(--text-black);
   font-size: 12px;
   margin: 0 0 24px;
 }

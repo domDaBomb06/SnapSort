@@ -36,7 +36,6 @@
   display: flex;
   flex-direction: column;
   gap: 2px;
-  box-shadow: 2px 2px 5px 1px rgb(236, 234, 234);
 }
 
 .faq__item-header {
@@ -69,4 +68,79 @@
   line-height: 1.5;
   margin: 0;
   padding-top: 4px;
+}
+
+
+
+
+
+.faq__search-wrap {
+  position: relative;
+  margin-bottom: 4px;
+}
+
+.faq__search {
+  width: 80%;
+  padding: 10px 16px 10px 40px;
+  border-radius: 12px;
+  border: 1px solid var(--smartSort-green);
+  background-color: var(--bg-white);
+  font-size: 14px;
+  color: var(--text-black);
+  outline: none;
+
+}
+
+.faq__search:focus {
+  border-color: var(--smartSort-green);
+  background-color: var(--bg-white);
+}
+
+.faq__search-icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-white);
+  font-size: 16px;
+  pointer-events: none;
+}
+
+.faq__empty {
+  text-align: center;
+  padding: 32px 16px;
+  color: var(--text-white);
+  font-size: 14px;
+}
+
+.faq__section-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-white);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin: 8px 0 4px;
+}
+
+.faq__reclaimer-card {
+  background-color: var(--smartSort-green);
+  border-radius: 16px;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.faq__reclaimer-card-title {
+  color: var(--bg-white);
+  font-weight: 600;
+  font-size: 14px;
+  margin: 0;
+}
+
+.faq__reclaimer-card-text {
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 13px;
+  line-height: 1.5;
+  margin: 0;
 }

@@ -11,6 +11,7 @@ function ScanPage({ onNavigate, onResult, points, newBadge, addPoint }) {
   const [hasPermission, setHasPermission] = useState(null)
   const [model, setModel] = useState(null)
   const [isLoading, setIsLoading] = useState(false)
+  const fileInputRef = useRef(null)
 
   // Load model
     useEffect(() => {
@@ -114,6 +115,48 @@ function ScanPage({ onNavigate, onResult, points, newBadge, addPoint }) {
     )
   }
 
+
+
+
+async function handleFileUpload(e) {
+  const file = e.target.files[0]
+  if (!file || !model) return
+  setIsLoading(true)
+
+  try {
+    const img = new Image()
+    img.src = URL.createObjectURL(file)
+    await new Promise((resolve) => { img.onload = resolve })
+
+    const predictions = await model.predict(img)
+    const top = predictions.reduce((a, b) =>
+      a.probability > b.probability ? a : b
+    )
+
+    if (top.probability >= 0.6) {
+      addPoint(top.className)
+    }
+
+    onResult({
+      label: top.className,
+      confidence: top.probability,
+    })
+
+    URL.revokeObjectURL(img.src)
+  } catch (err) {
+    console.error('Upload error:', err)
+  }
+
+  setIsLoading(false)
+  // Reset file input so same file can be uploaded again
+  e.target.value = ''
+}
+
+
+
+
+
+
   return (
     <div className="scan">
 
@@ -149,6 +192,20 @@ function ScanPage({ onNavigate, onResult, points, newBadge, addPoint }) {
         )}
       </div>
 
+
+
+
+
+
+      {/* Hidden file input */}
+      <input
+        type="file"
+        accept="image/*"
+        ref={fileInputRef}
+        onChange={handleFileUpload}
+        style={{ display: 'none' }}
+      />
+
       {/* Capture button */}
       <div className="scan__capture-area">
         <button
@@ -168,6 +225,23 @@ function ScanPage({ onNavigate, onResult, points, newBadge, addPoint }) {
       {!model && (
         <p className="scan__loading-hint">loading model...</p>
       )}
+
+      {/* Gallery upload */}
+      {model && (
+        <button
+          className="scan__gallery-btn"
+          onClick={() => fileInputRef.current.click()}
+          disabled={isLoading}
+        >
+          upload from gallery
+        </button>
+      )}
+
+
+
+
+
+
 
       {/* Bottom nav */}
       <div className="scan__nav">
