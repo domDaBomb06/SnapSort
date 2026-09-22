@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Header from '../components/Header'
 import BottomNav from '../components/BottomNav'
 import { faqData } from '../data/faqData'
@@ -8,22 +8,26 @@ const reclaimerFacts = [
   {
     id: 1,
     title: 'Who are waste reclaimers?',
-    text: 'Waste reclaimers are informal workers who collect recyclable materials from bins and waste streams. In South Africa, they divert an estimated 25 million tonnes of recyclable material from landfills every year.',
+    text: 'Waste reclaimers are informal workers who collect recyclable materials from bins and waste streams. In South Africa, they divert an estimated 25 million tonnes of recyclable material from landfills every year!',
   },
   {
     id: 2,
     title: 'How does sorting help reclaimers?',
-    text: 'When waste is correctly sorted, reclaimers can collect recyclables more quickly and safely. Contaminated bins — where food waste is mixed with recyclables — make the work slower, more dangerous, and less profitable.',
+    text: 'When waste is correctly sorted, reclaimers can collect recyclables more quickly and safely. Recycle bins that are contaminated with food waste and other items make their work slower, more dangerous, and less profitable.',
   },
-  {
-    id: 3,
-    title: 'What happens to recycled material?',
-    text: 'Reclaimers take sorted recyclables to buy-back centres where they are weighed and paid for by material type. Clean, sorted materials earn more and support reclaimer livelihoods directly.',
-  },
+
 ]
 
-function FAQPage({ onNavigate, points }) {
+function FAQPage({ onNavigate, points, scrollToReclaimers, onScrollHandled, onLogoClick }) {
   const [query, setQuery] = useState('')
+  const reclaimerRef = useRef(null)
+
+  useEffect(() => {
+    if (scrollToReclaimers && reclaimerRef.current) {
+      reclaimerRef.current.scrollIntoView({ behavior: 'smooth' })
+      onScrollHandled()
+    }
+  }, [scrollToReclaimers])
 
   const filtered = query.trim() === ''
     ? faqData
@@ -39,7 +43,12 @@ function FAQPage({ onNavigate, points }) {
   return (
     <div className="faq">
 
-      <Header points={points} showBack={false} />
+      <Header
+        points={points}
+        showBack={true}
+        onBack={() => onNavigate('home')}
+        onLogoClick={onLogoClick}
+      />
 
       <div className="faq__content">
 
@@ -50,9 +59,10 @@ function FAQPage({ onNavigate, points }) {
           </p>
         </div>
 
-        {/* Search bar */}
+        
+        
+
         <div className="faq__search-wrap">
-          <span className="faq__search-icon">🔍</span>
           <input
             type="text"
             className="faq__search"
@@ -62,7 +72,9 @@ function FAQPage({ onNavigate, points }) {
           />
         </div>
 
-        {/* Waste items */}
+        
+        
+        
         {filtered.length === 0 ? (
           <div className="faq__empty">
             No items found for "{query}". Try a different search term.
@@ -89,10 +101,15 @@ function FAQPage({ onNavigate, points }) {
           </>
         )}
 
-        {/* Reclaimer facts — only show when not searching */}
+        
         {query.trim() === '' && (
           <>
-            <p className="faq__section-title">About waste reclaimers</p>
+            <p
+              className="faq__section-title"
+              ref={reclaimerRef}
+            >
+              About waste reclaimers
+            </p>
             {reclaimerFacts.map((fact) => (
               <div key={fact.id} className="faq__reclaimer-card">
                 <p className="faq__reclaimer-card-title">{fact.title}</p>

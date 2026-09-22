@@ -4,7 +4,7 @@ function BottomNav({ currentPage, onNavigate }) {
   return (
     <div className="bottom-nav">
 
-      {/* Search / FAQ */}
+
       <button
         className="bottom-nav__btn"
         onClick={() => onNavigate('faq')}
@@ -19,7 +19,7 @@ function BottomNav({ currentPage, onNavigate }) {
         </svg>
       </button>
 
-      {/* Centre — camera button */}
+      
       <button
         className="bottom-nav__camera-btn"
         onClick={() => onNavigate('scan')}
@@ -31,7 +31,7 @@ function BottomNav({ currentPage, onNavigate }) {
         />
       </button>
 
-      {/* Profile / Progress */}
+      
       <button
         className="bottom-nav__btn"
         onClick={() => onNavigate('progress')}

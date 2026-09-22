@@ -13,7 +13,7 @@
   padding: 20px 16px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 20px;
 }
 
 .progress__summary {
@@ -54,12 +54,18 @@
   color: var(--text-black);
 }
 
+
+
+.progressBadges {
+  border: 1px solid var(--smartSort-green);
+  border-radius: 16px;
+  padding: 16px;
+}
+
 .progress__badges-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 12px;
-  border: 1px solid var(--smartSort-green);
-  border-radius: 16px;
 }
 
 .progress__badge {
@@ -129,12 +135,12 @@
 
 
 
-/*styling for the progress pie charts*/
+/*]pie chart styling*/
 .progress__stats-row {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  background-color: white;
+  background-color: var(--bg-white);
   border-radius: 16px;
   padding: 16px;
   border: 1px solid var(--smartSort-green);
@@ -168,7 +174,7 @@
 }
 
 .progress__chart-card {
-  background-color: white;
+  background-color: var(--bg-white);
   border-radius: 16px;
   padding: 16px;
   border: 1px solid var(--smartSort-green);

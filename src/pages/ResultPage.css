@@ -24,7 +24,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.06);
 }
 
 .result__low-confidence {
@@ -32,7 +31,6 @@
   background-color: var(--bg-white);
   border-radius: 10px;
   padding: 8px 12px;
-
   display: flex;
   align-items: center;
   gap: 10px;
@@ -107,7 +105,9 @@
 }
 
 
-/*HOW TO DISPOSE CARD*/
+
+
+
   .result__how-card {
     margin: 12px 14px 0;
     background-color: var(--smartSort-green);
@@ -132,7 +132,10 @@
     white-space: pre-line;
   }
 
-/*WASTE RECLAIMER FACT CARD */  
+
+
+
+
   .result__reclaimer-card {
     margin: 12px 14px 24px;
     background-color: var(--accent-color);
@@ -156,7 +159,9 @@
   }
 
 
-/*WASTE SORTING TIP CARD */  
+
+
+  
   .sorting_tip-card {
     margin: 12px 14px 24px;
     background-color: var(--bg-white);

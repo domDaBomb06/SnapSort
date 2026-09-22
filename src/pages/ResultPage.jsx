@@ -3,7 +3,7 @@ import Header from '../components/Header'
 import BottomNav from '../components/BottomNav'
 import './ResultPage.css'
 
-function ResultPage({ result, onNavigate, points }) {
+function ResultPage({ result, onNavigate, points, onLogoClick }) {
   const bin = binData[result.label]
   const confidence = result.confidence * 100
   const isLowConfidence = confidence < 60
@@ -25,25 +25,20 @@ function ResultPage({ result, onNavigate, points }) {
   return (
     <div className="result">
 
-      {/* Header */}
       <Header
         points={points}
         showBack={true}
         onBack={() => onNavigate('scan')}
+        onLogoClick={onLogoClick}
       />
 
-      {/* Scrollable content */}
       <div className="result__content">
-
-        {/* Main result card */}
         <div className="result__card">
 
 
 
-          {/* This item is */}
           <p className="result__this-item">This item is</p>
 
-          {/* Material name in bin colour */}
           <h2
             className="result__material"
             style={{ color: bin.binColour }}
@@ -51,19 +46,20 @@ function ResultPage({ result, onNavigate, points }) {
             {result.label}
           </h2>
 
-          {/* Bin label */}
+          
           <p className="result__bin-label">
             This goes in the <strong>{bin.binLabel}</strong> bin
           </p>
 
-          {/* Bin image */}
+          
           <img
             src={`/images/bins/${binImageFile}.png`}
             alt={`${result.label} bin`}
             className="result__bin-img"
           />
 
-          {/* Confidence bar */}
+          
+          
           <div className="result__confidence-row">
             <div className="result__confidence-labels">
               <span className="result__confidence-label">
@@ -88,7 +84,8 @@ function ResultPage({ result, onNavigate, points }) {
           </div>
 
 
-          {/* Low confidence banner */}
+          
+          
           {isLowConfidence && (
             <div className="result__low-confidence">
               <div>
@@ -101,26 +98,28 @@ function ResultPage({ result, onNavigate, points }) {
           )}
 
 
-
-
-
-
         </div>
 
-        {/* How to dispose card */}
+
+
+
+
+        
         <div className="result__how-card">
           <p className="result__how-title">How to dispose:</p>
           <p className="result__how-text">{bin.instruction}</p>
         </div>
 
-        {/* Reclaimer fact card */}
+        
+        
         <div className="result__reclaimer-card">
           <p className="result__reclaimer-title">Waste Reclaimer Fact:</p>
           <p className="result__reclaimer-text">{bin.reclaimerFact}</p>
         </div>
 
 
-        {/* Sorting tip card */}
+        
+        
         <div className="sorting_tip-card">
           <p className="sorting_tip-title">When in doubt:</p>
           <p className="sorting_tip-text">{bin.sortingFact}</p>

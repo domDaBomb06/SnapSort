@@ -92,9 +92,9 @@
 }
 
 .scan__loading-hint {
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--text-white);
   text-align: center;
-  font-size: 12px;
+  font-size: 16px;
   margin-top: 8px;
 }
 
@@ -124,24 +124,37 @@
 
 
 
-
-
-
-
 .scan__gallery-btn {
   background: none;
   border: none;
-  color: rgba(255, 255, 255, 0.5);
+  color: var(--text-white);
   font-size: 12px;
-  font-family: var(--text-black);
-  text-decoration: underline;
   cursor: pointer;
-  padding: 4px 0;
+  padding: 15px 0;
   text-align: center;
   display: block;
   margin: 0 auto;
 }
 
 .scan__gallery-btn:hover {
-  color: rgba(255, 255, 255, 0.8);
+  color: var(--smartSort-green);
+}
+
+
+
+
+
+
+.scan__gallery-area {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+}
+
+.scan__gallery-note {
+  color: var(--text-white);
+  font-size: 8px;
+  margin-top: 130px;
+  text-align: center;
 }

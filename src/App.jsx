@@ -6,13 +6,12 @@ import { usePoints } from './hooks/usePoints'
 import FAQPage from './pages/FAQPage'
 import ProgressPage from './pages/ProgressPage'
 
-
 function App() {
   const [currentPage, setCurrentPage] = useState(null)
   const [result, setResult] = useState(null)
+  const [scrollToReclaimers, setScrollToReclaimers] = useState(false)
   const { points, newBadge, addPoint, categoryCounts } = usePoints()
 
-  // Check if user has been onboarded
   useEffect(() => {
     const hasOnboarded = localStorage.getItem('snapsort_onboarded')
     if (hasOnboarded) {
@@ -37,7 +36,16 @@ function App() {
     setCurrentPage('home')
   }
 
-  // Still checking localStorage
+  function handleLogoClick() {
+    setCurrentPage('home')
+    setResult(null)
+  }
+
+  function handleGoToReclaimers() {
+    setScrollToReclaimers(true)
+    setCurrentPage('faq')
+  }
+
   if (currentPage === null) return null
 
   return (
@@ -59,12 +67,16 @@ function App() {
               handleNavigate(page)
             }
           }}
+          onGoToReclaimers={handleGoToReclaimers}
+          onLogoClick={handleLogoClick}
         />
       )}
 
       {currentPage === 'home' && (
         <LandingPage
           onNavigate={handleNavigate}
+          onGoToReclaimers={handleGoToReclaimers}
+          onLogoClick={handleLogoClick}
         />
       )}
 
@@ -75,6 +87,7 @@ function App() {
           points={points}
           newBadge={newBadge}
           addPoint={addPoint}
+          onLogoClick={handleLogoClick}
         />
       )}
 
@@ -83,6 +96,7 @@ function App() {
           result={result}
           onNavigate={handleNavigate}
           points={points}
+          onLogoClick={handleLogoClick}
         />
       )}
 
@@ -90,6 +104,9 @@ function App() {
         <FAQPage
           onNavigate={handleNavigate}
           points={points}
+          scrollToReclaimers={scrollToReclaimers}
+          onScrollHandled={() => setScrollToReclaimers(false)}
+          onLogoClick={handleLogoClick}
         />
       )}
 
@@ -98,9 +115,9 @@ function App() {
           onNavigate={handleNavigate}
           points={points}
           categoryCounts={categoryCounts}
+          onLogoClick={handleLogoClick}
         />
       )}
-
 
     </div>
   )
