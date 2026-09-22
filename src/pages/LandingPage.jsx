@@ -57,7 +57,7 @@ function LandingPage({ onNavigate, onGoToReclaimers }) {
         <div className="landing__purpose-card">
           <p className="landing__purpose-title">Why does this matter?</p>
           <p className="landing__purpose-text">
-            Sorting waste correctly is one of the simplest ways to make a difference on campus. When recyclables are properly sorted, waste reclaimers can work more safely and efficiently — turning your small action into real impact.
+            Sorting waste correctly is one of the simplest ways to make a difference on campus! When recyclables are properly sorted, waste reclaimers can work more safely and efficiently, turning your small action into real impact.
           </p>
           <button
             className="landing__purpose-btn"

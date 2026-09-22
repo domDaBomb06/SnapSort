@@ -52,7 +52,8 @@ function App() {
     <div style={{
       width: '100%',
       maxWidth: 430,
-      minHeight: '100vh',
+      height: '100%',
+      minHeight: '100dvh',
       margin: '0 auto',
       overflow: 'hidden',
       position: 'relative',
