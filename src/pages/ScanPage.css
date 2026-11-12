@@ -93,10 +93,46 @@
 
 .scan__loading-hint {
   color: var(--text-white);
-  text-align: center;
   font-size: 16px;
-  margin-top: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 14px;
+  margin: 12px 0 0;
 }
+
+.scan__loading-hint::before {
+  content: '';
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+
+.scan__loading-hint--nudge {
+  animation: nudge 0.4s ease;
+}
+
+@keyframes nudge {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  75% { transform: translateX(6px); }
+}
+
+.scan__capture-btn[aria-disabled='true'] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+
+
+
+
+
 
 .scan__nav {
   margin-top: auto;
@@ -157,4 +193,50 @@
   font-size: 8px;
   margin-top: 130px;
   text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.scan__error-overlay {
+  position: absolute;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.85);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  padding: 20px;
+  text-align: center;
+}
+
+.scan__error-text {
+  color: white;
+  font-size: 14px;
+  line-height: 1.5;
+  margin: 0;
+}
+
+.scan__error-btn {
+  background-color: white;
+  color: var(--color-primary);
+  border: none;
+  border-radius: 10px;
+  padding: 10px 24px;
+  font-family: var(--font-main);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
 }

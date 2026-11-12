@@ -1,6 +1,6 @@
 import './BottomNav.css'
 
-function BottomNav({ currentPage, onNavigate }) {
+function BottomNav({ currentPage, onNavigate, onCameraClick }) {
   return (
     <div className="bottom-nav">
 
@@ -22,7 +22,7 @@ function BottomNav({ currentPage, onNavigate }) {
       
       <button
         className="bottom-nav__camera-btn"
-        onClick={() => onNavigate('scan')}
+        onClick={() => (onCameraClick ? onCameraClick() : onNavigate('scan'))}
       >
         <img
           src="/images/logo/logoMark.svg"
