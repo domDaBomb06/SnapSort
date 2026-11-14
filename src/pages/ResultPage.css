@@ -34,6 +34,9 @@
   display: flex;
   align-items: center;
   gap: 10px;
+
+    border-left: 4px solid #EF9F27;
+  margin-top: 12px;
 }
 
 .result__low-confidence-title {
@@ -184,3 +187,105 @@
     line-height: 1.5;
     margin: 0;
   }
+
+
+  .result__material--unknown {
+  color: var(--text-black);
+}
+
+.result__chosen-note {
+  width: 100%;
+  color: var(--text-black);
+  font-size: 12px;
+  margin: 0;
+  text-align: center;
+}
+
+/* Thumbs feedback */
+.result__feedback {
+  width: 100%;
+  margin-top: 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+}
+
+.result__feedback-question,
+.result__feedback-note {
+  color: var(--text-black);
+  font-size: 13px;
+  margin: 0;
+}
+
+.result__feedback-buttons {
+  display: flex;
+  gap: 10px;
+}
+
+/* Every button added on this page */
+.result__feedback-btn,
+.result__picker-btn,
+.result__link-btn {
+  min-height: 44px;
+  padding: 8px 16px;
+  border: 2px solid var(--smartSort-green);
+  border-radius: 12px;
+  background-color: var(--bg-white);
+  color: var(--text-black);
+  font-family: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.result__feedback-btn:focus-visible,
+.result__picker-btn:focus-visible,
+.result__link-btn:focus-visible {
+  outline: 3px solid var(--text-black);
+  outline-offset: 2px;
+}
+
+/* Category picker */
+.result__picker {
+  width: 85%;
+  margin-top: 4px;
+}
+
+.result__picker-heading {
+  color: var(--text-black);
+  font-weight: 600;
+  font-size: 14px;
+  margin: 0 0 8px;
+  text-align: center;
+}
+
+.result__picker-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.result__picker-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+/* Five buttons in two columns: let the last one span the full width */
+.result__picker-btn:last-child {
+  grid-column: 1 / -1;
+}
+
+.result__picker-btn--chosen {
+  background-color: var(--smartSort-green);
+  color: var(--text-white);
+}
+
+.result__picker-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: 1px solid var(--text-black);
+  flex-shrink: 0;
+}

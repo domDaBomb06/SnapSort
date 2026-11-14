@@ -1,31 +1,33 @@
 :root {
   --smartSort-green: #2D6A4F;
-  --accent-color: #547BA5;
-  --bg-grey: #7D7D7D;
+  --accent-color: #4D74A0;
+  --bg-grey: #6B6B6B;
   --bg-white: white;
   --text-white: white;
   --text-black: black;
-  --text-grey: #888;
+  --text-grey: #666666;
   --font-main: 'Montserrat', sans-serif;
   --confidence-track-bar: #e6ddd0;
-
-
-
-  body {
-    font-family: var(--font-main);
-    margin: 0;
-    padding: 0;
-  }
-
-
-
 }
 
-
-  html, body {
+html,
+body {
   height: 100%;
+}
+
+body {
+  font-family: var(--font-main);
+  margin: 0;
+  padding: 0;
 }
 
 #root {
   height: 100%;
+}
+
+
+:focus-visible {
+  outline: 3px solid var(--text-black);
+  outline-offset: 2px;
+  box-shadow: 0 0 0 6px var(--bg-white);
 }

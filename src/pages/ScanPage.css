@@ -2,11 +2,29 @@
 .scan {
   display: flex;
   flex-direction: column;
-  height: 100dvh;
+  height: 100dvh; /*this is just to make sure the scan page takes up the full height of the viewport on browsers that dont use dvh*/
+  height: 100vh;
   width: 100%;
   background-color: var(--bg-grey);
   overflow: hidden;
 }
+
+/*added this to make the page scrollable becausr there is too much content to fit on one screen */
+.scan__body {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 32px; /* this part keeps the last line out of the way of the camera button (because its kinda raised) */
+}
+
+
+.scan__nav {
+  flex-shrink: 0;
+}
+
 
 .scan__instruction {
   color: var(--text-white);
@@ -17,14 +35,17 @@
   flex-shrink: 0;
 }
 
+/* The camera square is as wide as the screen allows (24px margin each side),but its never gonna be taller than the height of the screen */
 .scan__viewfinder {
-  margin: 0 24px;
+  box-sizing: border-box;
+  width: max(160px, min(calc(100% - 48px), calc(100vh - 430px)));
+  width: max(160px, min(calc(100% - 48px), calc(100dvh - 430px)));
+  aspect-ratio: 1 / 1;
   border-radius: 20px;
   overflow: hidden;
   border: 3px solid var(--smartSort-green);
   position: relative;
   flex-shrink: 0;
-  aspect-ratio: 1 / 1;
 }
 
 .scan__video {
@@ -85,6 +106,11 @@
   cursor: not-allowed;
 }
 
+.scan__capture-btn[aria-disabled='true'] {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 .scan__capture-icon {
   width: 36px;
   height: 36px;
@@ -93,7 +119,6 @@
 
 .scan__loading-hint {
   color: var(--text-white);
-  font-size: 16px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -112,102 +137,53 @@
   animation: spin 1s linear infinite;
 }
 
-
 .scan__loading-hint--nudge {
   animation: nudge 0.4s ease;
 }
 
-@keyframes nudge {
-  0%, 100% { transform: translateX(0); }
-  25% { transform: translateX(-6px); }
-  75% { transform: translateX(6px); }
-}
-
-.scan__capture-btn[aria-disabled='true'] {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-
-
-
-
-
-
-.scan__nav {
-  margin-top: auto;
-}
-
-.scan__no-permission {
-  flex: 1;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 24px;
-}
-
-.scan__no-permission p {
-  color: var(--text-white);
-  text-align: center;
-  font-size: 14px;
-  line-height: 1.5;
-}
-
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
-
-
-
-
-.scan__gallery-btn {
-  background: none;
-  border: none;
-  color: var(--text-white);
-  font-size: 12px;
-  cursor: pointer;
-  padding: 15px 0;
-  text-align: center;
-  display: block;
-  margin: 0 auto;
-}
-
-.scan__gallery-btn:hover {
-  color: var(--smartSort-green);
-}
-
-
-
-
-
-
+/* Gallery upload: a real button, clearly separated from the capture button */
 .scan__gallery-area {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 4px;
+  gap: 6px;
+  margin-top: 12px;
+  padding: 0 24px;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.scan__gallery-btn {
+  min-height: 44px;
+  min-width: 200px;
+  padding: 10px 24px;
+  background: transparent;
+  border: 2px solid var(--text-white);
+  border-radius: 12px;
+  color: var(--text-white);
+  font-family: var(--font-main);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.scan__gallery-btn:hover:not(:disabled) {
+  background-color: var(--text-white);
+  color: var(--bg-grey);
+}
+
+.scan__gallery-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
 }
 
 .scan__gallery-note {
   color: var(--text-white);
-  font-size: 8px;
-  margin-top: 130px;
+  font-size: 12px;
+  line-height: 1.4;
+  margin: 0;
   text-align: center;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 .scan__error-overlay {
   position: absolute;
@@ -223,15 +199,16 @@
 }
 
 .scan__error-text {
-  color: white;
+  color: var(--text-white);
   font-size: 14px;
   line-height: 1.5;
   margin: 0;
 }
 
 .scan__error-btn {
-  background-color: white;
-  color: var(--color-primary);
+  min-height: 44px;
+  background-color: var(--bg-white);
+  color: var(--smartSort-green);
   border: none;
   border-radius: 10px;
   padding: 10px 24px;
@@ -239,4 +216,45 @@
   font-size: 14px;
   font-weight: 600;
   cursor: pointer;
+}
+
+/* Short screens: small phones, or any phone with the browser bars showing */
+@media (max-height: 700px) {
+  .scan__viewfinder {
+    width: max(140px, min(calc(100% - 48px), calc(100vh - 380px)));
+    width: max(140px, min(calc(100% - 48px), calc(100dvh - 380px)));
+  }
+
+  .scan__instruction {
+    font-size: 14px;
+    margin: 8px 0;
+  }
+
+  .scan__capture-area {
+    margin-top: 12px;
+  }
+
+  .scan__capture-btn {
+    width: 64px;
+    height: 64px;
+  }
+
+  .scan__capture-icon {
+    width: 32px;
+    height: 32px;
+  }
+
+  .scan__gallery-area {
+    margin-top: 8px;
+  }
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes nudge {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-6px); }
+  75% { transform: translateX(6px); }
 }

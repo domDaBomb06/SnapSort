@@ -218,93 +218,100 @@ function ScanPage({ onNavigate, onResult, points, newBadge, addPoint, onLogoClic
 
       <BadgeNotification message={newBadge} />
 
-      <p className="scan__instruction">Place item in the frame</p>
+      <div className="scan__body">
 
-      <div className="scan__viewfinder">
-        <video
-          ref={videoRef}
-          autoPlay
-          playsInline
-          muted
-          className="scan__video"
-          onPlaying={() => setVideoReady(true)}
-        />
+            <p className="scan__instruction">Place item in the frame</p>
 
-        {isLoading && (
-          <div className="scan__loading-overlay" role="status">
-            <div className="scan__spinner" />
-            <span className="scan__loading-text">Identifying item...</span>
+            <div className="scan__viewfinder">
+              <video
+                ref={videoRef}
+                autoPlay
+                playsInline
+                muted
+                className="scan__video"
+                onPlaying={() => setVideoReady(true)}
+              />
+
+                  {isLoading && (
+                    <div className="scan__loading-overlay" role="status">
+                      <div className="scan__spinner" />
+                      <span className="scan__loading-text">Identifying item...</span>
+                    </div>
+                  )}
+
+                  {overlay && !isLoading && (
+                    <div className="scan__error-overlay" role="alert">
+                      <p className="scan__error-text">{overlay.text}</p>
+                      {overlay.buttonLabel && (
+                        <button className="scan__error-btn" onClick={overlay.onClick}>
+                          {overlay.buttonLabel}
+                        </button>
+                      )}
+                    </div>
+                  )}
+            </div>
+
+
+            <input
+              type="file"
+              accept="image/*"
+              ref={fileInputRef}
+              onChange={handleFileUpload}
+              hidden
+            />
+
+                <div className="scan__capture-area">
+                  <button
+                    className="scan__capture-btn"
+                    onClick={handleCapture}
+                    disabled={isLoading}
+                    aria-disabled={!isReady}
+                    aria-label="Scan item"
+                  >
+                    <img
+                      src="/images/logo/logoMark.svg"
+                      alt=""
+                      className="scan__capture-icon"
+                    />
+                  </button>
+                </div>
+
+                {statusText && (
+                  <p
+                    key={nudge}
+                    className={`scan__loading-hint ${nudge > 0 ? 'scan__loading-hint--nudge' : ''}`}
+                    role="status"
+                  >
+                    {statusText}
+                  </p>
+                )}
+
+                {model && (
+                    <div className="scan__gallery-area">
+                      <button
+                        className="scan__gallery-btn"
+                        onClick={() => fileInputRef.current.click()}
+                        disabled={isLoading || !model}
+                      >
+                        Upload from gallery
+                      </button>
+                      <p className="scan__gallery-note">
+                        Your photos are never stored or uploaded
+                      </p>
+                    </div>
+                )}
+
+
           </div>
-        )}
 
-        {overlay && !isLoading && (
-          <div className="scan__error-overlay" role="alert">
-            <p className="scan__error-text">{overlay.text}</p>
-            {overlay.buttonLabel && (
-              <button className="scan__error-btn" onClick={overlay.onClick}>
-                {overlay.buttonLabel}
-              </button>
-            )}
+
+          <div className="scan__nav">
+            <BottomNav
+              currentPage="scan"
+              onNavigate={onNavigate}
+              onCameraClick={handleCapture}
+            />
           </div>
-        )}
-      </div>
-
-      <input
-        type="file"
-        accept="image/*"
-        ref={fileInputRef}
-        onChange={handleFileUpload}
-        hidden
-      />
-
-      <div className="scan__capture-area">
-        <button
-          className="scan__capture-btn"
-          onClick={handleCapture}
-          disabled={isLoading}
-          aria-disabled={!isReady}
-          aria-label="Scan item"
-        >
-          <img
-            src="/images/logo/logoMark.svg"
-            alt=""
-            className="scan__capture-icon"
-          />
-        </button>
-      </div>
-
-      {statusText && (
-        <p
-          key={nudge}
-          className={`scan__loading-hint ${nudge > 0 ? 'scan__loading-hint--nudge' : ''}`}
-          role="status"
-        >
-          {statusText}
-        </p>
-      )}
-
-      {model && (
-        <div className="scan__gallery-area">
-          <button
-            className="scan__gallery-btn"
-            onClick={() => fileInputRef.current.click()}
-            disabled={isLoading}
-          >
-            upload from gallery
-          </button>
-          <p className="scan__gallery-note">
-            your photos are never stored or uploaded
-          </p>
-        </div>
-      )}
-
-      <div className="scan__nav">
-        <BottomNav
-          currentPage="scan"
-          onNavigate={onNavigate}
-          onCameraClick={handleCapture}
-        />
-      </div>
 
     </div>
   )
