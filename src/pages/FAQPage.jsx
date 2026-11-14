@@ -27,7 +27,7 @@ function FAQPage({ onNavigate, points, scrollToReclaimers, onScrollHandled, onLo
       reclaimerRef.current.scrollIntoView({ behavior: 'smooth' })
       onScrollHandled()
     }
-  }, [scrollToReclaimers])
+  }, [scrollToReclaimers, onScrollHandled])
 
   const filtered = query.trim() === ''
     ? faqData

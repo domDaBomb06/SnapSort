@@ -19,12 +19,20 @@ export function usePoints() {
 
   // Load from localStorage on first render
   useEffect(() => {
-    const savedPoints = localStorage.getItem('snapsort_points')
-    const savedBadges = localStorage.getItem('snapsort_badges')
-    const savedCounts = localStorage.getItem('snapsort_categories')
-    if (savedPoints) setPoints(parseInt(savedPoints))
-    if (savedBadges) setBadges(JSON.parse(savedBadges))
-    if (savedCounts) setCategoryCounts(JSON.parse(savedCounts))
+    const [points, setPoints] = useState(() => {
+      const savedPoints = localStorage.getItem('snapsort_points')
+      return savedPoints ? parseInt(savedPoints, 10) : 0
+    })
+
+    const [badges, setBadges] = useState(() => {
+      const savedBadges = localStorage.getItem('snapsort_badges')
+      return savedBadges ? JSON.parse(savedBadges) : []
+    })
+
+    const [categoryCounts, setCategoryCounts] = useState(() => {
+      const savedCounts = localStorage.getItem('snapsort_categories')
+      return savedCounts ? JSON.parse(savedCounts) : {}
+    })
   }, [])
 
   function addPoint(category) {

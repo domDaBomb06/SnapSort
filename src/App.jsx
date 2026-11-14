@@ -6,24 +6,20 @@ import { usePoints } from './hooks/usePoints'
 import FAQPage from './pages/FAQPage'
 import ProgressPage from './pages/ProgressPage'
 
+
 function App() {
-  const [currentPage, setCurrentPage] = useState(null)
-  const [result, setResult] = useState(null)
-  const [scrollToReclaimers, setScrollToReclaimers] = useState(false)
-  const { points, newBadge, addPoint, categoryCounts } = usePoints()
+    const [currentPage, setCurrentPage] = useState(() => {
+        const hasOnboarded = localStorage.getItem('snapsort_onboarded')
+        return hasOnboarded ? 'home' : 'landing'
+    })
 
-  useEffect(() => {
-    const hasOnboarded = localStorage.getItem('snapsort_onboarded')
-    if (hasOnboarded) {
-      setCurrentPage('home')
-    } else {
-      setCurrentPage('landing')
-    }
-  }, [])
-
-  function handleNavigate(page) {
-    setCurrentPage(page)
-    setResult(null)
+    const [result, setResult] = useState(null)
+    const [scrollToReclaimers, setScrollToReclaimers] = useState(false)
+    const { points, newBadge, addPoint, categoryCounts } = usePoints()
+    
+    function handleNavigate(page) {
+      setCurrentPage(page)
+      setResult(null)
   }
 
   function handleResult(resultData) {
