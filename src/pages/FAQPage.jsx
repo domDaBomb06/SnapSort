@@ -92,7 +92,9 @@ function FAQPage({ onNavigate, points, scrollToReclaimers, onScrollHandled, onLo
                   <p className="faq__item-name">{item.name}</p>
                   <span
                     className="faq__item-chip"
-                    style={{ backgroundColor: item.binColour }}
+                    style={{ backgroundColor: item.binColour,
+                      color: readableTextColour(item.binColour),
+                     }}
                   >
                     {item.binLabel}
                   </span>

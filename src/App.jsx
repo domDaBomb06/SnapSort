@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import LandingPage from './pages/LandingPage'
 import ScanPage from './pages/ScanPage'
 import ResultPage from './pages/ResultPage'
