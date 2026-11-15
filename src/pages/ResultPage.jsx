@@ -78,7 +78,7 @@ function ResultPage({ result, onNavigate, points, onLogoClick }) {
                 {chosenLabel ? 'You chose' : 'This item is'}
               </p>
 
-              <h2 className="result__material" style={{ color: bin.binColour }}>
+              <h2 className="result__material" style={{ color: bin.headingColour ?? bin.binColour }}>
                 {displayLabel}
               </h2>
 
@@ -102,12 +102,13 @@ function ResultPage({ result, onNavigate, points, onLogoClick }) {
                     <span className="result__confidence-label">
                       SnapSort AI confidence
                     </span>
-                    <span
-                      className="result__confidence-label"
-                      style={{ color: confidenceColour }}
-                    >
+
+                    
+                    <span className="result__confidence-label">
                       {confidenceLabel}
                     </span>
+
+
                   </div>
                   <div className="result__confidence-track">
                     <div

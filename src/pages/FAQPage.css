@@ -87,29 +87,14 @@
   background-color: var(--bg-white);
   font-size: 14px;
   color: var(--text-black);
-  outline: none;
-
 }
 
-.faq__search:focus {
-  border-color: var(--smartSort-green);
-  background-color: var(--bg-white);
-}
 
-.faq__search-icon {
-  position: absolute;
-  left: 12px;
-  top: 50%;
-  transform: translateY(-50%);
-  color: var(--text-white);
-  font-size: 16px;
-  pointer-events: none;
-}
 
 .faq__empty {
   text-align: center;
   padding: 32px 16px;
-  color: var(--text-white);
+  color: var(--text-black);
   font-size: 14px;
 }
 

@@ -145,4 +145,5 @@
   font-family: var(--font-main);
   cursor: pointer;
   align-self: flex-start;
+  min-height: 44px;
 }

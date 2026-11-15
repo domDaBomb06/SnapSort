@@ -30,7 +30,8 @@ function ProgressPage({ onNavigate, points, categoryCounts, onLogoClick }) {
       value: count,
     }))
 
-  const totalScans = Object.values(categoryCounts || {}).reduce((a, b) => a + b, 0)
+    const chartSummary = pieData.map((item) => `${item.value} ${item.name}`).join(', ')
+    const totalScans = Object.values(categoryCounts || {}).reduce((a, b) => a + b, 0)
   const recyclableCount = (categoryCounts?.Plastic || 0) +
     (categoryCounts?.Paper || 0) +
     (categoryCounts?.Glass || 0) +
@@ -86,7 +87,7 @@ function ProgressPage({ onNavigate, points, categoryCounts, onLogoClick }) {
 
         
         {pieData.length > 0 ? (
-          <div className="progress__chart-card">
+          <div className="progress__chart-card" role="img" aria-label={`Materials scanned: ${chartSummary}`}>
               <p className="progress__chart-title">Materials scanned</p>
               <ResponsiveContainer width="100%" height={220}>
                 <PieChart>
@@ -144,10 +145,15 @@ function ProgressPage({ onNavigate, points, categoryCounts, onLogoClick }) {
                     >
                       <img
                         src={milestone.image}
-                        alt={milestone.label}
+                        alt=""
                         className="progress__badge-icon"
                       />
-                      <p className="progress__badge-label">{milestone.label}</p>
+                      <p className="progress__badge-label">
+                        {milestone.label}
+                        <span className="visually-hidden">
+                          {earned ? ' (earned)' : ' (locked)'}
+                        </span>
+                      </p>
                     </div>
                 ) 
               })}

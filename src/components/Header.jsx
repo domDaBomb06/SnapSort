@@ -1,35 +1,49 @@
 import './Header.css'
 
 function Header({ points, showPoints = true, showBack = false, onBack, onLogoClick }) {
-  return (
-    <div className="header">
+  const logo = (
+    <img
+      src="/images/logo/logo.png"
+      alt={onLogoClick ? '' : 'Back to Instructions'}
+      className="header__logo"
+    />
+  )
 
-      {/* back button */}
+  return (
+    <header className="header">
+
       <div className="header__left">
         {showBack && (
-          <button className="header__back-btn" onClick={onBack}>
-            ⌂
+          <button
+            className="header__back-btn"
+            onClick={onBack}
+            aria-label="Go to the home screen"
+          >
+            <span aria-hidden="true">⌂</span>
           </button>
         )}
       </div>
 
-      {/* logo */}
-      <img
-        src="/images/logo/logo.png"
-        alt="SnapSort logo"
-        className="header__logo"
-        onClick={onLogoClick}
-        style={{ cursor: onLogoClick ? 'pointer' : 'default' }}
-      />
+      {/* A button when the logo goes somewhere, a plain image when it doesn't */}
+      {onLogoClick ? (
+        <button
+          className="header__logo-btn"
+          onClick={onLogoClick}
+          aria-label="SnapSort home"
+        >
+          {logo}
+        </button>
+      ) : (
+        logo
+      )}
 
-      {/* points */}
       <div className="header__points">
         {showPoints && (
           <span>{points} pts</span>
         )}
       </div>
 
-    </div>
+    </header>
   )
 }
 

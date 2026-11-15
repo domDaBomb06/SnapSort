@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import Header from '../components/Header'
 import BottomNav from '../components/BottomNav'
 import { faqData } from '../data/faqData'
+import { readableTextColour } from '../utils/colour'
 import './FAQPage.css'
 
 const reclaimerFacts = [
@@ -69,6 +70,7 @@ function FAQPage({ onNavigate, points, scrollToReclaimers, onScrollHandled, onLo
             placeholder="search an item"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
+            aria-label="Search the waste guide"
           />
         </div>
 
