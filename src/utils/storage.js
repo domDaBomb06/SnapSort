@@ -18,3 +18,15 @@ export function writeJSON(key, value) {
     return false
   }
 }
+
+// Removes everything SnapSort has saved on this device (every key starting with "snapsort_")
+export function clearSavedData() {
+  try {
+    Object.keys(localStorage)
+      .filter((key) => key.startsWith('snapsort_'))
+      .forEach((key) => localStorage.removeItem(key))
+    return true
+  } catch {
+    return false
+  }
+}

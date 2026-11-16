@@ -222,6 +222,7 @@ function ScanPage({ onNavigate, onResult, points, newBadge, addPoint, onLogoClic
 
             <p className="scan__instruction">Place item in the frame</p>
 
+
             <div className="scan__viewfinder">
               <video
                 ref={videoRef}
@@ -238,7 +239,7 @@ function ScanPage({ onNavigate, onResult, points, newBadge, addPoint, onLogoClic
                       <span className="scan__loading-text">Identifying item...</span>
                     </div>
                   )}
-
+            <p className="scan__instruction">Place item in the frame</p>
                   {overlay && !isLoading && (
                     <div className="scan__error-overlay" role="alert">
                       <p className="scan__error-text">{overlay.text}</p>

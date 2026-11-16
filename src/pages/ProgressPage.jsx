@@ -11,8 +11,7 @@ const CATEGORY_COLOURS = {
   'General Waste': '#1A1A1A',
 }
 
-function ProgressPage({ onNavigate, points, categoryCounts, onLogoClick }) {
-  const badges = JSON.parse(localStorage.getItem('snapsort_badges') || '{}')
+function ProgressPage({ onNavigate, points, categoryCounts, badges, onLogoClick }) {
 
   const milestones = [
     { key: 'firstScan', label: 'First Scan', image: '/images/badges/firstScan.png' },

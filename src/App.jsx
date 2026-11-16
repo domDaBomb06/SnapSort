@@ -2,24 +2,25 @@ import { useState } from 'react'
 import LandingPage from './pages/LandingPage'
 import ScanPage from './pages/ScanPage'
 import ResultPage from './pages/ResultPage'
-import { usePoints } from './hooks/usePoints'
 import FAQPage from './pages/FAQPage'
 import ProgressPage from './pages/ProgressPage'
+import EvalPage from './pages/EvalPage'
+import ErrorBoundary from './components/ErrorBoundary'
+import { usePoints } from './hooks/usePoints'
+import { readJSON, writeJSON } from './utils/storage'
 
+function AppContent() {
+  // Returning visitors skip the landing screen. Decided up front, so no effect is needed.
+  const [currentPage, setCurrentPage] = useState(() =>
+    readJSON('snapsort_onboarded', false) === true ? 'home' : 'landing'
+  )
+  const [result, setResult] = useState(null)
+  const [scrollToReclaimers, setScrollToReclaimers] = useState(false)
+  const { points, badges, newBadge, addPoint, categoryCounts } = usePoints()
 
-function App() {
-    const [currentPage, setCurrentPage] = useState(() => {
-        const hasOnboarded = localStorage.getItem('snapsort_onboarded')
-        return hasOnboarded ? 'home' : 'landing'
-    })
-
-    const [result, setResult] = useState(null)
-    const [scrollToReclaimers, setScrollToReclaimers] = useState(false)
-    const { points, newBadge, addPoint, categoryCounts } = usePoints()
-    
-    function handleNavigate(page) {
-      setCurrentPage(page)
-      setResult(null)
+  function handleNavigate(page) {
+    setCurrentPage(page)
+    setResult(null)
   }
 
   function handleResult(resultData) {
@@ -28,7 +29,7 @@ function App() {
   }
 
   function handleLandingComplete() {
-    localStorage.setItem('snapsort_onboarded', 'true')
+    writeJSON('snapsort_onboarded', true)
     setCurrentPage('home')
   }
 
@@ -41,8 +42,6 @@ function App() {
     setScrollToReclaimers(true)
     setCurrentPage('faq')
   }
-
-  if (currentPage === null) return null
 
   return (
     <div style={{
@@ -112,11 +111,22 @@ function App() {
           onNavigate={handleNavigate}
           points={points}
           categoryCounts={categoryCounts}
+          badges={badges}
           onLogoClick={handleLogoClick}
         />
       )}
-
     </div>
+  )
+}
+
+function App() {
+  // Developer tool: open the app at /#eval to run the accuracy test
+  const showAccuracyTest = window.location.hash === '#eval'
+
+  return (
+    <ErrorBoundary>
+      {showAccuracyTest ? <EvalPage /> : <AppContent />}
+    </ErrorBoundary>
   )
 }
 

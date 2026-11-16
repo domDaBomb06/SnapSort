@@ -1,0 +1,80 @@
+.eval {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 24px 16px 48px;
+  font-family: var(--font-main);
+  color: var(--text-black);
+  line-height: 1.5;
+}
+
+.eval h1,
+.eval h2,
+.eval h3 {
+  color: var(--smartSort-green);
+}
+
+.eval__field {
+  display: block;
+  margin: 16px 0;
+  font-weight: 600;
+}
+
+.eval__field input {
+  display: block;
+  margin-top: 8px;
+  font-weight: 400;
+}
+
+.eval__btn {
+  min-height: 44px;
+  padding: 10px 20px;
+  margin: 0 8px 8px 0;
+  border: 2px solid var(--smartSort-green);
+  border-radius: 12px;
+  background-color: var(--smartSort-green);
+  color: var(--text-white);
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.eval__btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.eval__error {
+  border-left: 6px solid var(--text-black);
+  padding: 8px 12px;
+}
+
+.eval__model {
+  margin-top: 32px;
+}
+
+.eval__summary {
+  padding-left: 20px;
+}
+
+.eval__scroll {
+  overflow-x: auto;
+}
+
+.eval__table {
+  border-collapse: collapse;
+  margin: 8px 0 16px;
+  font-size: 14px;
+}
+
+.eval__table th,
+.eval__table td {
+  border: 1px solid var(--text-black);
+  padding: 6px 12px;
+  text-align: left;
+}
+
+.eval__table th {
+  background-color: var(--smartSort-green);
+  color: var(--text-white);
+}
