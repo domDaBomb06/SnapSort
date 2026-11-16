@@ -165,7 +165,7 @@ function ProgressPage({ onNavigate, points, categoryCounts, badges, onLogoClick 
         
         <div className="progress__tip">
           <p>
-            <span>Tip:</span> Scan more items to unlock badges and build your sorting knowledge. Every correct scan makes a difference on campus.
+            <span>Tip:</span> Scan more items to unlock badges and build your sorting knowledge. Every correct scan makes a difference on campus!
           </p>
         </div>
 

@@ -1,3 +1,4 @@
+// this page is to help me test the accuracy of the ai model, by letting me run it on a folder of brand new photos that the model has not seen, and compare its predictions to the true labels (the folder names). It is not part of the actual app.
 import { useState } from 'react'
 import * as tmImage from '@teachablemachine/image'
 import {
@@ -24,7 +25,7 @@ const FOLDER_TO_CLASS = {
 
 const IMAGE_FILE = /\.(jpe?g|png|webp|heic|heif)$/i
 
-// The folder a photo sits in is its true label: "heldout/Plastic/IMG_01.jpg" means Plastic.
+// The folder a photo sits in is its true label: "/Plastic/IMG_01.jpg" means the item is Plastic.
 function labelFromPath(path) {
   const parts = path.split('/')
   const folder = (parts[parts.length - 2] ?? '').toLowerCase().replace(/[-_]+/g, ' ').trim()
@@ -38,7 +39,7 @@ function allowFolders(input) {
 
 async function loadAndWarmUp(modelUrl, metadataUrl) {
   const model = await tmImage.load(modelUrl, metadataUrl)
-  // The first prediction is always slow, so do one before timing anything
+
   const blank = document.createElement('canvas')
   blank.width = 224
   blank.height = 224
@@ -190,7 +191,7 @@ function ModelResults({ title, summary }) {
 function EvalPage() {
   const [selected, setSelected] = useState([])
   const [skipped, setSkipped] = useState([])
-  const [phase, setPhase] = useState('idle') // idle, loading, running, done or error
+  const [phase, setPhase] = useState('idle') 
   const [progress, setProgress] = useState(0)
   const [rows, setRows] = useState([])
   const [unreadable, setUnreadable] = useState([])
@@ -280,13 +281,13 @@ function EvalPage() {
     <main className="eval">
       <h1>SnapSort accuracy test</h1>
       <p>
-        Developer tool. Choose the folder that holds your held-out photos. Inside it there should be one
+        Developer tool. Choose the folder that holds your held out photos. Inside it there should be one
         folder per category: Plastic, Paper, Glass, Metal and General Waste. The folder a photo is in is
         its true label. Nothing is uploaded: the photos are classified in this browser.
       </p>
 
       <label className="eval__field">
-        Held-out photo folder
+        Held out photo folder
         <input type="file" multiple ref={allowFolders} onChange={handleFolder} />
       </label>
 
@@ -303,7 +304,7 @@ function EvalPage() {
       {skipped.length > 0 && (
         <p role="alert">
           {skipped.length} photos were skipped because the folder they are in is not named Plastic, Paper,
-          Glass, Metal or General Waste.
+          Glass, Metal or General Waste (or the image could not be read)
         </p>
       )}
 

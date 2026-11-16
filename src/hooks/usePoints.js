@@ -16,8 +16,7 @@ const BADGES = [
 
 const isCount = (value) => Number.isInteger(value) && value >= 0
 
-// Reading saved data: anything missing, damaged or the wrong shape
-// falls back to a safe default instead of crashing.
+// Reading saved data: anything missing, damaged or the wrong shape will fall back to default instead of the whole thing crashing.
 function loadPoints() {
   const saved = readJSON(POINTS_KEY, 0)
   return isCount(saved) ? saved : 0
@@ -33,8 +32,7 @@ function loadCategoryCounts() {
   return counts
 }
 
-// A badge counts as earned if it was saved as earned,
-// or if the points total has already reached it.
+// A badge counts as earned if it was saved as earned or if the points total has already reached it.
 function loadBadges(points) {
   const saved = readJSON(BADGES_KEY, null)
   const badges = {}
@@ -45,7 +43,7 @@ function loadBadges(points) {
 }
 
 export function usePoints() {
-  // Saved values are read once, as the starting state (no effect needed)
+  // Saved values are read once, as the starting state
   const [points, setPoints] = useState(loadPoints)
   const [badges, setBadges] = useState(() => loadBadges(points))
   const [categoryCounts, setCategoryCounts] = useState(loadCategoryCounts)

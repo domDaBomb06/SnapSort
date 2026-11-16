@@ -8,13 +8,11 @@ import './ScanPage.css'
 
 const PREDICTION_ERROR = 'Something went wrong while identifying that item. Please try again.'
 
-// Resolves once the browser has painted, so the "Identifying item..." overlay
-// is on screen before the heavy prediction work starts.
+// Resolves once the browser has painted, so the "Identifying item..." overlay is on screen before the heavy prediction work starts.
 const nextPaint = () =>
   new Promise((resolve) => requestAnimationFrame(() => setTimeout(resolve, 0)))
 
-// Opens an uploaded file as an image. Resolves with null (instead of waiting
-// forever) if the file can't be read as an image.
+// Opens an uploaded file as an image. Resolves with null (instead of waiting forever) if the file can't be read as an image.
 function readImage(file) {
   return new Promise((resolve) => {
     const url = URL.createObjectURL(file)
@@ -43,7 +41,7 @@ function ScanPage({ onNavigate, onResult, points, newBadge, addPoint, onLogoClic
   const [errorMessage, setErrorMessage] = useState(null)
   const [nudge, setNudge] = useState(0)
 
-  // Both the model and the camera must be ready before a scan can run
+  // Both the model and the camera must be ready before a scan can run so the user doesn't waste time tapping the button before the app is ready.
   const isReady = Boolean(model) && videoReady
 
   // Get the model (it is loaded once and shared, see utils/modelLoader.js)
@@ -77,7 +75,7 @@ function ScanPage({ onNavigate, onResult, points, newBadge, addPoint, onLogoClic
         })
 
         if (!isMounted) {
-          // The user left the page while the camera was starting: release it straight away
+          // The user left the page while the camera was starting: release it straight away (now the scary camera light won't stay on hehe)
           mediaStream.getTracks().forEach((track) => track.stop())
           return
         }
@@ -239,7 +237,6 @@ function ScanPage({ onNavigate, onResult, points, newBadge, addPoint, onLogoClic
                       <span className="scan__loading-text">Identifying item...</span>
                     </div>
                   )}
-            <p className="scan__instruction">Place item in the frame</p>
                   {overlay && !isLoading && (
                     <div className="scan__error-overlay" role="alert">
                       <p className="scan__error-text">{overlay.text}</p>

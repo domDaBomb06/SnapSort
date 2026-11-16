@@ -18,8 +18,7 @@ async function downloadAndWarmUp() {
   const model = await withTimeout(tmImage.load(MODEL_URL, METADATA_URL), DOWNLOAD_TIMEOUT_MS)
   console.info(`[SnapSort] model downloaded in ${Math.round(performance.now() - downloadStart)} ms`)
 
-  // The first prediction is always the slowest (the browser has to set the model up),
-  // so run one on a blank image now, before the user taps anything.
+  // The first prediction is always the slowest (the browser has to set the model up), so this will run one on a blank image now, before the user taps anything.
   const warmUpStart = performance.now()
   const blank = document.createElement('canvas')
   blank.width = 224
@@ -30,8 +29,7 @@ async function downloadAndWarmUp() {
   return model
 }
 
-// Loads the model once and shares it, so opening the scan page again
-// doesn't download and set up the model a second time.
+// Loads the model once and shares it, so opening the scan page again doesn't download and set up the model a second time.
 export function loadModel() {
   if (!modelPromise) {
     modelPromise = downloadAndWarmUp().catch((err) => {

@@ -11,7 +11,7 @@ export const binData = {
     binColour: '#F0B429',
     headingColour: '#946F00',
     binLabel: 'YELLOW',
-    instruction: 'Rinse the plastic container and place in the yellow recycling bin. Remove lids — they go in general waste. ADDITIONAL TIP: If it is a plastic bottle, use the reverse vending machine in the Matrix foyer for a deposit refund.',
+    instruction: 'Rinse the plastic container and place in the yellow recycling bin. Remove lids they go in general waste. ADDITIONAL TIP: If it is a plastic bottle, use the reverse vending machine in the Matrix foyer for a deposit refund.',
     reclaimerFact: 'Correctly sorted plastic helps waste reclaimers work more safely and efficiently!',
     sortingFact: 'Check for the word “compostable” or recycle symbol #7. Items with a recycle symbol or the numbers #1 to 4, and #6 can be recycled. If in doubt, it is safer to put it in the general waste:)',
   },

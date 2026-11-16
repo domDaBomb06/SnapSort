@@ -18,7 +18,7 @@ const CATEGORIES = Object.keys(binImageMap)
 
 function ResultPage({ result, onNavigate, points, onLogoClick }) {
   const [rating, setRating] = useState(null) // null, 'up' or 'down'
-  const [chosenLabel, setChosenLabel] = useState(null) // the category the user picked
+  const [chosenLabel, setChosenLabel] = useState(null) // the category the user picks
   const feedbackTime = useRef(null) // identifies this scan's feedback entry
 
   const confidence = result.confidence * 100
@@ -103,7 +103,7 @@ function ResultPage({ result, onNavigate, points, onLogoClick }) {
                       SnapSort AI confidence
                     </span>
 
-                    
+
                     <span className="result__confidence-label">
                       {confidenceLabel}
                     </span>
